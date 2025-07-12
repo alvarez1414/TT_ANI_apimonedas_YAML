@@ -25,7 +25,7 @@ spec:
           RETRY_INTERVAL=2 # Intervalo de espera en segundos
 
           for i in $(seq 1 $MAX_RETRIES); do
-            PGPASSWORD="${PGPASSWORD}" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME_POSTGRES" -c "CREATE DATABASE ${DB_NAME_MONEDAS};" &>/dev/null || true
+            PGPASSWORD="${PGPASSWORD}" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME_POSTGRES" -c '\q' &>/dev/null
               if [ $? -eq 0 ]; then
                 break
               fi
