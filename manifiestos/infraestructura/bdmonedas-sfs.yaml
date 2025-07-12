@@ -6,7 +6,7 @@ spec:
   serviceName: "bdmonedas-servicio"
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: bdmonedas
   template:
     metadata:
@@ -18,16 +18,16 @@ spec:
           image: postgres:16
           ports:
             - containerPort: 5432
-        - env:
-          - name: POSTGRES_DB
-            value: monedas
-          - name: POSTGRES_USER
-            value: postgres
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: bdmonedas-secretos
-                key: BDMONEDAS_PASSWORD
+          env:
+            - name: POSTGRES_DB
+              value: monedas
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bdmonedas-secretos
+                  key: BDMONEDAS_PASSWORD
           volumeMounts:
             - name: storage-bdmonedas
               mountPath: /var/lib/postgresql/data
@@ -39,4 +39,3 @@ spec:
         resources:
           requests:
             storage: 1Gi
-
