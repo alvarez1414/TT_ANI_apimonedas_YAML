@@ -30,7 +30,7 @@ pipeline{
             steps {
                 script {
                     bat """
-                    kubectl rollout status statefulset/bdmonedas-sfs-tt
+                    kubectl rollout status statefulset/bdmonedas-sfs
                     """
                 }
             }
